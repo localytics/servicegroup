@@ -1,0 +1,26 @@
+# run "docker-compose run --rm go test ./..." to run tests
+# run "docker-compose run --rm --entrypoint=ci/checks.sh go" to run all CI checks locally
+version: '3.4'
+
+services:
+  go: # basically just syntactic sugar for one-off go commands, eg "docker-compose run go generate -x ./..."
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: base
+    ports:
+      - "8080:8080" # application
+      - "6060:6060" # pprof & metrics
+    volumes:
+      # Host-shared volumes
+      - ./:/code
+      # Docker-only volumes
+      - dotcache:/root/.cache
+      - modcache:/go/pkg/mod
+    environment:
+      - CONTINUOUS_INTEGRATION # Travis passthrough if we need to know what environment we're in
+volumes:
+  # ~/.cache: build cache can't be shared with host due to OS binary format differences.
+  dotcache:
+  # $GOPATH/pkg/mod: module cache shouldn't vary by OS, but is probably not safe to share across go versions
+  modcache:

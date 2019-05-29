@@ -1,0 +1,12 @@
+.git
+/bin
+/internal/tools/bin
+/internal/tools/bin-darwin-*
+.idea
+.vscode
+node_modules
+
+# binaries from project
+/cmd/servicegroup-example-server/main
+/servicegroup-example-server
+/main

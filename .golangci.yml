@@ -1,0 +1,22 @@
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - errcheck
+    - goimports
+    - golint
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - structcheck
+    - unused
+    - varcheck
+linters-settings:
+  golint:
+    min-confidence: 0.6
+run:
+  skip-dirs:
+    - bin
+    - node_modules
+    - terraform

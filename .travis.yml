@@ -1,0 +1,13 @@
+language: minimal
+dist: xenial
+services:
+- docker
+git:
+  depth: 2
+branches:
+  only:
+  - master
+install: true
+script: docker-compose run --rm --entrypoint=ci/checks.sh go
+after_success:
+  - bash &lt;(curl -s https://codecov.io/bash) -t 9d1a111d-0657-46f4-a978-534be3f4d12d

@@ -1,0 +1,32 @@
+.DS_Store
+
+### Golang ###
+# https://github.com/github/gitignore/blob/master/Go.gitignore
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage.txt
+
+# Built binaries
+/cmd/servicegroup-example-server/main
+/servicegroup-example-server
+/main
+
+# Binary tools
+internal/tools/bin/
+internal/tools/bin-*/
+
+.idea
+
+# Unencrypted netrc files (typically copied for docker builds from host's ~/.netrc)
+.netrc
